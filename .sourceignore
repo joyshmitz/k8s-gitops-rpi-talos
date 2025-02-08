@@ -4,13 +4,13 @@
 /*
 
 # Include the following explicit folder(s)
-!/k8s
+!/kubernetes
 
 # Exclude sub-foler(s) and file(s)
-/k8s/clusters/**/infrastructure/
-/k8s/clusters/**/secrets/
+/kubernetes/clusters/**/infrastructure/
+/kubernetes/clusters/**/secrets/
 
 # Include sub-foler(s) and file(s)
-!/k8s/clusters/**/secrets/cluster-config.yaml
-!/k8s/clusters/**/secrets/cluster-secrets.enc.yaml
-!/k8s/clusters/**/secrets/sealed-secret-private-key.enc.yaml
+!/kubernetes/clusters/**/secrets/cluster-config.yaml
+!/kubernetes/clusters/**/secrets/cluster-secrets.enc.yaml
+!/kubernetes/clusters/**/secrets/sealed-secret-private-key.enc.yaml

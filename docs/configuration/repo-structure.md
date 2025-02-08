@@ -1,12 +1,15 @@
 # Flux Repository Structure
 
+!!! note "Work in progress"
+    This document is a work in progress.
+
 ## TL;DR Quick Start
 
 If you're familiar with Kustomize and how it operates within the Flux ecosystem this will provide a quick overview:
 
 ```bash
 .
-└── k8s/
+└── kubernetes/
     ├── clusters/
     │   ├── production/                         # One folder per cluster.
     │   │   ├── flux-system/                    # Folder containing flux-system manifests.
@@ -102,7 +105,7 @@ The **namespaces/** configuration is structured into:
 In **namespaces/base/** dir will be a hierarchy of all **namespace/** dirs which will contain application resources. Each cluster overlay includes each namespace and/or application which is explicitly referenced; The base application configuration is defined with the following values:
 
 ```bash
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: metallb
@@ -130,7 +133,7 @@ spec:
 In **namespaces/overlays/production/** dir we have a Kustomize patch file(s) with the production cluster specific values:
 
 ```bash
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: metallb

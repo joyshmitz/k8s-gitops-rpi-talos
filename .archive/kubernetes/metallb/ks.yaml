@@ -1,0 +1,41 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: metallb
+  namespace: flux-system
+  labels:
+    substitution.flux/enabled: true
+spec:
+  interval: 30m
+  retryInterval: 1m
+  timeout: 3m
+  path: "./kubernetes/namespaces/base/network-system/metallb/app"
+  prune: true
+  wait: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: metallb-config
+  namespace: flux-system
+  labels:
+    substitution.flux/enabled: true
+spec:
+  interval: 30m
+  retryInterval: 1m
+  timeout: 3m
+  path: "./kubernetes/namespaces/base/network-system/metallb/config"
+  prune: true
+  wait: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  dependsOn:
+    - name: metallb
+      namespace: flux-system
